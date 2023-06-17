@@ -14,9 +14,9 @@ def inventory_list(request):
 
 @login_required
 def per_product_view(request, pk):
-    inventory = get_object_or_404(inventory, pk=pk)
+    inventory = get_object_or_404(Inventory, pk=pk)
     context = {
-        'inventory': inventory
+        'inventory': Inventory
     }
     
     return render(request, "inventory/per_product.html", context=context)
