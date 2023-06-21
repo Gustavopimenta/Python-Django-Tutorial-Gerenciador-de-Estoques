@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Inventory 
 from django.contrib.auth.decorators import login_required
 from .forms import AddInventoryForm
@@ -6,7 +6,7 @@ from .forms import AddInventoryForm
 @login_required
 def inventory_list(request):
     inventories = Inventory.objects.all()
-    context = {
+    context = { 
         "title": "Inventory List",
         "inventories": inventories
     }
@@ -16,7 +16,7 @@ def inventory_list(request):
 def per_product_view(request, pk):
     inventory = get_object_or_404(Inventory, pk=pk)
     context = {
-        'inventory': Inventory
+        'inventory': inventory
     }
     
     return render(request, "inventory/per_product.html", context=context)
